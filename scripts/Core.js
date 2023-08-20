@@ -26,6 +26,8 @@ function Core() {
         } else {
             if (player.audioFiles.length > index) {
                 res.sendFile(player.audioFiles[index]);
+            } else {
+                res.json({});
             }
         }
     });
@@ -33,7 +35,7 @@ function Core() {
 
     // IO Connection
     const onConnection = function(stream) {
-        stream.emit('ready', {config: config});
+        stream.emit('ready', { config: config });
     }
 
     io.on('connection', onConnection);
@@ -41,8 +43,8 @@ function Core() {
     // Public functions
     return {
         async init() {
-            httpServer.listen(8000, () => {
-                console.log("Server is listening");
+            httpServer.listen(config.connection.port, () => {
+                console.log("Server is listening on: " + `${config.connection.protocol}://${config.connection.host}${config.connection.port}/`);
             });
         }
     };

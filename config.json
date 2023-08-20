@@ -1,5 +1,10 @@
 {
     "preview": {
         "aspect-ratio": "16 / 9"
+    },
+    "connection": {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 8000
     }
 }

@@ -1,5 +1,5 @@
 async function fetchAudioFiles() {
-    const response = await fetch('http://localhost:8000/audiofiles?n=0');
+    const response = await fetch('http://localhost:8000/audiofiles');
     
     const json = await response.json();
 
@@ -7,7 +7,7 @@ async function fetchAudioFiles() {
 
     const files = [];
     for (let i = 0; i < json.length; ++i) {
-        const res = await fetch();
+        const res = await fetch(`http://localhost:8000/audiofiles?n=${i}`);
 
         const blob = await res.blob();
 
